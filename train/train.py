@@ -274,7 +274,7 @@ def train(args, logger):
         shuffle=True,
         collate_fn=data_collator,
         num_workers=args.dataloader_num_workers,
-        pin_memory=True,
+        pin_memory=False,
         persistent_workers=True
     )
     sample_dataloader = torch.utils.data.DataLoader(
@@ -283,7 +283,7 @@ def train(args, logger):
         shuffle=True,
         collate_fn=data_collator,
         num_workers=args.dataloader_num_workers,
-        pin_memory=True,
+        pin_memory=False,
         persistent_workers=True
     )
     

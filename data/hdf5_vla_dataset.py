@@ -18,7 +18,9 @@ class HDF5VLADataset:
     def __init__(self) -> None:
         # [Modify] The path to the HDF5 dataset directory
         # Each HDF5 file contains one episode
-        HDF5_DIR = "data/datasets/agilex/rdt_data/"
+        # HDF5_DIR = "/home/lbyang/workspace/llm-robot/cobot_magic/rdt_data/fold_towel"
+        HDF5_DIR = "/home/lbyang/workspace/llm-robot/cobot_magic/data/pick-cube"
+        print(f"Loading HDF5 dataset from: {HDF5_DIR}")
         self.DATASET_NAME = "agilex"
         
         self.file_paths = []
@@ -145,7 +147,7 @@ class HDF5VLADataset:
             if isinstance(instruction, list):
                 instruction = np.random.choice(instruction)
             # You can also use precomputed language embeddings (recommended)
-            # instruction = "path/to/lang_embed.pt"
+            instruction = "./weights/maniskill-model/lang_embeds/text_embed_StackCube-v1.pt"
             
             # Assemble the meta
             meta = {

@@ -47,7 +47,8 @@ class RoboticDiffusionTransformerModel(object):
         self.image_size = image_size
         self.device = device
         self.control_frequency = control_frequency
-        self.text_tokenizer, self.text_model = self.get_text_encoder(pretrained_text_encoder_name_or_path)
+        # self.text_tokenizer, self.text_model = self.get_text_encoder(pretrained_text_encoder_name_or_path)
+        self.text_tokenizer = None # don't download text encoder (t5-xxl)
         self.image_processor, self.vision_model = self.get_vision_encoder(pretrained_vision_encoder_name_or_path)
         self.policy = self.get_policy()
 
@@ -108,11 +109,11 @@ class RoboticDiffusionTransformerModel(object):
         device = self.device
         weight_dtype = self.dtype
         self.policy.eval()
-        self.text_model.eval()
+        # self.text_model.eval()
         self.vision_model.eval()
 
         self.policy = self.policy.to(device, dtype=weight_dtype)
-        self.text_model = self.text_model.to(device, dtype=weight_dtype)
+        # self.text_model = self.text_model.to(device, dtype=weight_dtype)
         self.vision_model = self.vision_model.to(device, dtype=weight_dtype)
 
     def load_pretrained_weights(self, pretrained=None):

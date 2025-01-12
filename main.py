@@ -1,9 +1,9 @@
 import argparse
 import os
 from train.train import train
-
 from accelerate.logging import get_logger
 
+import multiprocessing
 
 def parse_args(input_args=None):
     parser = argparse.ArgumentParser(description="Main script for training RDT.")
@@ -295,6 +295,7 @@ def parse_args(input_args=None):
 
 
 if __name__ == "__main__":
+    multiprocessing.set_start_method('spawn')
     logger = get_logger(__name__)
     args = parse_args()
     train(args, logger)

@@ -13,6 +13,21 @@ from collections import deque
 from PIL import Image
 import cv2
 
+def save_video(imgs, filepath):
+    folder = os.path.dirname(filepath)
+    if folder and not os.path.exists(folder):
+        os.makedirs(folder)
+    fps = 30.0
+    frame_count, width, height = len(imgs), imgs[0].shape[1], imgs[0].shape[0]
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    video = cv2.VideoWriter(filepath, fourcc, fps, (width, height))
+    for i in range(frame_count):
+        frame = cv2.cvtColor(imgs[i], cv2.COLOR_RGB2BGR)
+        video.write(frame)
+    video.release()
+    print(f'saved video to {filepath}')
+
+
 def parse_args(args=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("-e", "--env-id", type=str, default="PickCube-v1", help=f"Environment to run motion planning solver on. ")
@@ -68,7 +83,7 @@ config_path = 'configs/base.yaml'
 with open(config_path, "r") as fp:
     config = yaml.safe_load(fp)
 pretrained_text_encoder_name_or_path = "google/t5-v1_1-xxl"
-pretrained_vision_encoder_name_or_path = "google/siglip-so400m-patch14-384"
+pretrained_vision_encoder_name_or_path = "./weights/siglip-so400m-patch14-384"
 pretrained_path = args.pretrained_path
 policy = create_model(
     args=config, 
@@ -78,8 +93,8 @@ policy = create_model(
     pretrained_vision_encoder_name_or_path=pretrained_vision_encoder_name_or_path
 )
 
-if os.path.exists(f'text_embed_{env_id}.pt'):
-    text_embed = torch.load(f'text_embed_{env_id}.pt')
+if os.path.exists(f'./weights/maniskill-model/lang_embeds/text_embed_{env_id}.pt'):
+    text_embed = torch.load(f'./weights/maniskill-model/lang_embeds/text_embed_{env_id}.pt')
 else:
     text_embed = policy.encode_instruction(task2lang[env_id])
     torch.save(text_embed, f'text_embed_{env_id}.pt')
@@ -124,6 +139,9 @@ for episode in tqdm.trange(total_episodes):
             obs_window.append(img)
             proprio = obs['agent']['qpos'][:, :-1]
             video_frames.append(img)
+            # from pprint import pprint
+            # pprint(video_frames)
+            # print(f'{len(video_frames)=}, {video_frames[0].shape=}')
             global_steps += 1
             if terminated or truncated:
                 assert "success" in info, sorted(info.keys())
@@ -132,6 +150,7 @@ for episode in tqdm.trange(total_episodes):
                     done = True
                     break 
     print(f"Trial {episode+1} finished, success: {info['success']}, steps: {global_steps}")
+    save_video(video_frames, f"video/episod_{episode}.mp4")
 
 success_rate = success_count / total_episodes * 100
 print(f"Success rate: {success_rate}%")

@@ -234,6 +234,10 @@ class RDTRunner(
         return: (batch_size, horizon, action_dim), predicted action sequence
         '''
         # Prepare the state and conditions
+        lang_tokens = lang_tokens.to(torch.float32)
+        img_tokens = img_tokens.to(torch.float32)
+        state_tokens = state_tokens.to(torch.float32)
+        
         state_tokens = torch.cat([state_tokens, action_mask], dim=2)
         lang_cond, img_cond, state_traj = self.adapt_conditions(
             lang_tokens, img_tokens, state_tokens)

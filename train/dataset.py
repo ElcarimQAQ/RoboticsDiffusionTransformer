@@ -353,8 +353,11 @@ class VLAConsumerDataset(Dataset):
                 if self.use_precomp_lang_embed:
                     if content["instruction"][-1] == ".":
                         content["instruction"] = content["instruction"][:-1]
-                    data_dict["lang_embed"] = torch.load(content["instruction"]) \
-                        if random.random() > self.cond_mask_prob else self.empty_lang_embed
+                    if random.random() > self.cond_mask_prob:
+                        data_dict["lang_embed"] = torch.load(content["instruction"])
+                        data_dict["lang_embed"] = data_dict["lang_embed"].squeeze(0)
+                    else:
+                        data_dict["lang_embed"] = self.empty_lang_embed
                 else:
                     instruction = content["instruction"] \
                         if random.random() > self.cond_mask_prob else ""
