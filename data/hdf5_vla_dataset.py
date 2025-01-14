@@ -19,7 +19,7 @@ class HDF5VLADataset:
         # [Modify] The path to the HDF5 dataset directory
         # Each HDF5 file contains one episode
         # HDF5_DIR = "/home/lbyang/workspace/llm-robot/cobot_magic/rdt_data/fold_towel"
-        HDF5_DIR = "/home/lbyang/workspace/llm-robot/cobot_magic/data/pick-cube"
+        HDF5_DIR = "/data3/hwz/cobot_magic/data/stack-cube"
         print(f"Loading HDF5 dataset from: {HDF5_DIR}")
         self.DATASET_NAME = "agilex"
         

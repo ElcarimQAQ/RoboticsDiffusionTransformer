@@ -1,0 +1,345 @@
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=default/episode_0_False.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=default/episode_1_False.mp4
+Trial 3 finished, success: tensor([True]), steps: 170
+saved video to videos/PegInsertionSide-v1_shader=default/episode_2_True.mp4
+Trial 4 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=default/episode_3_False.mp4
+Trial 5 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=default/episode_4_False.mp4
+Trial 6 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=default/episode_5_False.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=default/episode_6_False.mp4
+Trial 8 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=default/episode_7_False.mp4
+Trial 9 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=default/episode_8_False.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=default/episode_9_False.mp4
+Success rate: 10.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt-fast/episode_0_False.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt-fast/episode_1_False.mp4
+Trial 3 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt-fast/episode_2_False.mp4
+Trial 4 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt-fast/episode_3_False.mp4
+Trial 5 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt-fast/episode_4_False.mp4
+Trial 6 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt-fast/episode_5_False.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt-fast/episode_6_False.mp4
+Trial 8 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt-fast/episode_7_False.mp4
+Trial 9 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt-fast/episode_8_False.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt-fast/episode_9_False.mp4
+Success rate: 0.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt/episode_0_False.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt/episode_1_False.mp4
+Trial 3 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt/episode_2_False.mp4
+Trial 4 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt/episode_3_False.mp4
+Trial 5 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt/episode_4_False.mp4
+Trial 6 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt/episode_5_False.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt/episode_6_False.mp4
+Trial 8 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt/episode_7_False.mp4
+Trial 9 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt/episode_8_False.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/PegInsertionSide-v1_shader=rt/episode_9_False.mp4
+Success rate: 0.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([True]), steps: 70
+saved video to videos/PickCube-v1_shader=default/episode_0_True.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=default/episode_1_False.mp4
+Trial 3 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=default/episode_2_False.mp4
+Trial 4 finished, success: tensor([True]), steps: 69
+saved video to videos/PickCube-v1_shader=default/episode_3_True.mp4
+Trial 5 finished, success: tensor([True]), steps: 53
+saved video to videos/PickCube-v1_shader=default/episode_4_True.mp4
+Trial 6 finished, success: tensor([True]), steps: 66
+saved video to videos/PickCube-v1_shader=default/episode_5_True.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=default/episode_6_False.mp4
+Trial 8 finished, success: tensor([True]), steps: 73
+saved video to videos/PickCube-v1_shader=default/episode_7_True.mp4
+Trial 9 finished, success: tensor([True]), steps: 116
+saved video to videos/PickCube-v1_shader=default/episode_8_True.mp4
+Trial 10 finished, success: tensor([True]), steps: 85
+saved video to videos/PickCube-v1_shader=default/episode_9_True.mp4
+Success rate: 70.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt-fast/episode_0_False.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt-fast/episode_1_False.mp4
+Trial 3 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt-fast/episode_2_False.mp4
+Trial 4 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt-fast/episode_3_False.mp4
+Trial 5 finished, success: tensor([True]), steps: 79
+saved video to videos/PickCube-v1_shader=rt-fast/episode_4_True.mp4
+Trial 6 finished, success: tensor([True]), steps: 95
+saved video to videos/PickCube-v1_shader=rt-fast/episode_5_True.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt-fast/episode_6_False.mp4
+Trial 8 finished, success: tensor([True]), steps: 84
+saved video to videos/PickCube-v1_shader=rt-fast/episode_7_True.mp4
+Trial 9 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt-fast/episode_8_False.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt-fast/episode_9_False.mp4
+Success rate: 30.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt/episode_0_False.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt/episode_1_False.mp4
+Trial 3 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt/episode_2_False.mp4
+Trial 4 finished, success: tensor([True]), steps: 617
+saved video to videos/PickCube-v1_shader=rt/episode_3_True.mp4
+Trial 5 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt/episode_4_False.mp4
+Trial 6 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt/episode_5_False.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt/episode_6_False.mp4
+Trial 8 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt/episode_7_False.mp4
+Trial 9 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt/episode_8_False.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/PickCube-v1_shader=rt/episode_9_False.mp4
+Success rate: 10.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([True]), steps: 127
+saved video to videos/StackCube-v1_shader=default/episode_0_True.mp4
+Trial 2 finished, success: tensor([True]), steps: 104
+saved video to videos/StackCube-v1_shader=default/episode_1_True.mp4
+Trial 3 finished, success: tensor([True]), steps: 93
+saved video to videos/StackCube-v1_shader=default/episode_2_True.mp4
+Trial 4 finished, success: tensor([True]), steps: 111
+saved video to videos/StackCube-v1_shader=default/episode_3_True.mp4
+Trial 5 finished, success: tensor([True]), steps: 86
+saved video to videos/StackCube-v1_shader=default/episode_4_True.mp4
+Trial 6 finished, success: tensor([True]), steps: 96
+saved video to videos/StackCube-v1_shader=default/episode_5_True.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=default/episode_6_False.mp4
+Trial 8 finished, success: tensor([True]), steps: 137
+saved video to videos/StackCube-v1_shader=default/episode_7_True.mp4
+Trial 9 finished, success: tensor([True]), steps: 120
+saved video to videos/StackCube-v1_shader=default/episode_8_True.mp4
+Trial 10 finished, success: tensor([True]), steps: 85
+saved video to videos/StackCube-v1_shader=default/episode_9_True.mp4
+Success rate: 90.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt-fast/episode_0_False.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt-fast/episode_1_False.mp4
+Trial 3 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt-fast/episode_2_False.mp4
+Trial 4 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt-fast/episode_3_False.mp4
+Trial 5 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt-fast/episode_4_False.mp4
+Trial 6 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt-fast/episode_5_False.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt-fast/episode_6_False.mp4
+Trial 8 finished, success: tensor([True]), steps: 655
+saved video to videos/StackCube-v1_shader=rt-fast/episode_7_True.mp4
+Trial 9 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt-fast/episode_8_False.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt-fast/episode_9_False.mp4
+Success rate: 10.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt/episode_0_False.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt/episode_1_False.mp4
+Trial 3 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt/episode_2_False.mp4
+Trial 4 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt/episode_3_False.mp4
+Trial 5 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt/episode_4_False.mp4
+Trial 6 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt/episode_5_False.mp4
+Trial 7 finished, success: tensor([True]), steps: 440
+saved video to videos/StackCube-v1_shader=rt/episode_6_True.mp4
+Trial 8 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt/episode_7_False.mp4
+Trial 9 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt/episode_8_False.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/StackCube-v1_shader=rt/episode_9_False.mp4
+Success rate: 10.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=default/episode_0_False.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=default/episode_1_False.mp4
+Trial 3 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=default/episode_2_False.mp4
+Trial 4 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=default/episode_3_False.mp4
+Trial 5 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=default/episode_4_False.mp4
+Trial 6 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=default/episode_5_False.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=default/episode_6_False.mp4
+Trial 8 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=default/episode_7_False.mp4
+Trial 9 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=default/episode_8_False.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=default/episode_9_False.mp4
+Success rate: 0.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt-fast/episode_0_False.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt-fast/episode_1_False.mp4
+Trial 3 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt-fast/episode_2_False.mp4
+Trial 4 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt-fast/episode_3_False.mp4
+Trial 5 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt-fast/episode_4_False.mp4
+Trial 6 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt-fast/episode_5_False.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt-fast/episode_6_False.mp4
+Trial 8 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt-fast/episode_7_False.mp4
+Trial 9 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt-fast/episode_8_False.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt-fast/episode_9_False.mp4
+Success rate: 0.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt/episode_0_False.mp4
+Trial 2 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt/episode_1_False.mp4
+Trial 3 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt/episode_2_False.mp4
+Trial 4 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt/episode_3_False.mp4
+Trial 5 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt/episode_4_False.mp4
+Trial 6 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt/episode_5_False.mp4
+Trial 7 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt/episode_6_False.mp4
+Trial 8 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt/episode_7_False.mp4
+Trial 9 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt/episode_8_False.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/PlugCharger-v1_shader=rt/episode_9_False.mp4
+Success rate: 0.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([True]), steps: 70
+saved video to videos/PushCube-v1_shader=default/episode_0_True.mp4
+Trial 2 finished, success: tensor([True]), steps: 71
+saved video to videos/PushCube-v1_shader=default/episode_1_True.mp4
+Trial 3 finished, success: tensor([True]), steps: 71
+saved video to videos/PushCube-v1_shader=default/episode_2_True.mp4
+Trial 4 finished, success: tensor([True]), steps: 67
+saved video to videos/PushCube-v1_shader=default/episode_3_True.mp4
+Trial 5 finished, success: tensor([True]), steps: 58
+saved video to videos/PushCube-v1_shader=default/episode_4_True.mp4
+Trial 6 finished, success: tensor([True]), steps: 76
+saved video to videos/PushCube-v1_shader=default/episode_5_True.mp4
+Trial 7 finished, success: tensor([True]), steps: 68
+saved video to videos/PushCube-v1_shader=default/episode_6_True.mp4
+Trial 8 finished, success: tensor([True]), steps: 55
+saved video to videos/PushCube-v1_shader=default/episode_7_True.mp4
+Trial 9 finished, success: tensor([True]), steps: 77
+saved video to videos/PushCube-v1_shader=default/episode_8_True.mp4
+Trial 10 finished, success: tensor([True]), steps: 69
+saved video to videos/PushCube-v1_shader=default/episode_9_True.mp4
+Success rate: 100.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([True]), steps: 65
+saved video to videos/PushCube-v1_shader=rt-fast/episode_0_True.mp4
+Trial 2 finished, success: tensor([True]), steps: 56
+saved video to videos/PushCube-v1_shader=rt-fast/episode_1_True.mp4
+Trial 3 finished, success: tensor([True]), steps: 67
+saved video to videos/PushCube-v1_shader=rt-fast/episode_2_True.mp4
+Trial 4 finished, success: tensor([True]), steps: 70
+saved video to videos/PushCube-v1_shader=rt-fast/episode_3_True.mp4
+Trial 5 finished, success: tensor([True]), steps: 51
+saved video to videos/PushCube-v1_shader=rt-fast/episode_4_True.mp4
+Trial 6 finished, success: tensor([True]), steps: 59
+saved video to videos/PushCube-v1_shader=rt-fast/episode_5_True.mp4
+Trial 7 finished, success: tensor([True]), steps: 67
+saved video to videos/PushCube-v1_shader=rt-fast/episode_6_True.mp4
+Trial 8 finished, success: tensor([True]), steps: 53
+saved video to videos/PushCube-v1_shader=rt-fast/episode_7_True.mp4
+Trial 9 finished, success: tensor([True]), steps: 68
+saved video to videos/PushCube-v1_shader=rt-fast/episode_8_True.mp4
+Trial 10 finished, success: tensor([False]), steps: 1008
+saved video to videos/PushCube-v1_shader=rt-fast/episode_9_False.mp4
+Success rate: 90.0%
+Diffusion params: 1.228320e+09
+Loading weights from ./weights/maniskill-model/rdt/mp_rank_00_model_states.pt
+Trial 1 finished, success: tensor([True]), steps: 66
+saved video to videos/PushCube-v1_shader=rt/episode_0_True.mp4
+Trial 2 finished, success: tensor([True]), steps: 55
+saved video to videos/PushCube-v1_shader=rt/episode_1_True.mp4
+Trial 3 finished, success: tensor([True]), steps: 67
+saved video to videos/PushCube-v1_shader=rt/episode_2_True.mp4
+Trial 4 finished, success: tensor([True]), steps: 63
+saved video to videos/PushCube-v1_shader=rt/episode_3_True.mp4
+Trial 5 finished, success: tensor([True]), steps: 50
+saved video to videos/PushCube-v1_shader=rt/episode_4_True.mp4
+Trial 6 finished, success: tensor([True]), steps: 67
+saved video to videos/PushCube-v1_shader=rt/episode_5_True.mp4
+Trial 7 finished, success: tensor([True]), steps: 56
+saved video to videos/PushCube-v1_shader=rt/episode_6_True.mp4
+Trial 8 finished, success: tensor([True]), steps: 64
+saved video to videos/PushCube-v1_shader=rt/episode_7_True.mp4
+Trial 9 finished, success: tensor([True]), steps: 65
+saved video to videos/PushCube-v1_shader=rt/episode_8_True.mp4
+Trial 10 finished, success: tensor([True]), steps: 67
+saved video to videos/PushCube-v1_shader=rt/episode_9_True.mp4
+Success rate: 100.0%

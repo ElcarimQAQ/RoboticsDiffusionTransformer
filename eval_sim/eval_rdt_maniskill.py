@@ -99,7 +99,7 @@ else:
     text_embed = policy.encode_instruction(task2lang[env_id])
     torch.save(text_embed, f'text_embed_{env_id}.pt')
 
-MAX_EPISODE_STEPS = 200 
+MAX_EPISODE_STEPS = 1000
 total_episodes = args.num_traj  
 success_count = 0  
 
@@ -150,7 +150,7 @@ for episode in tqdm.trange(total_episodes):
                     done = True
                     break 
     print(f"Trial {episode+1} finished, success: {info['success']}, steps: {global_steps}")
-    save_video(video_frames, f"video/episod_{episode}.mp4")
+    save_video(video_frames, f"videos/{env_id}_shader={args.shader}/episode_{episode}_{bool(info['success'])}.mp4")
 
 success_rate = success_count / total_episodes * 100
 print(f"Success rate: {success_rate}%")
