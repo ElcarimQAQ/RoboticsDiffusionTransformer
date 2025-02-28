@@ -6,14 +6,14 @@ import yaml
 from models.multimodal_encoder.t5_encoder import T5Embedder
 
 
-GPU = 0
+GPU = 1
 MODEL_PATH = "google/t5-v1_1-xxl"
 CONFIG_PATH = "configs/base.yaml"
 SAVE_DIR = "outs/"
 
 # Modify this to your task name and instruction
-TASK_NAME = "handover_pan"
-INSTRUCTION = "Pick up the black marker on the right and put it into the packaging box on the left."
+TASK_NAME = "fold_cloth_pro"
+INSTRUCTION = "Fold the T-shirt, finally folded into a small rectangle."
 
 # Note: if your GPU VRAM is less than 24GB, 
 # it is recommended to enable offloading by specifying an offload directory.

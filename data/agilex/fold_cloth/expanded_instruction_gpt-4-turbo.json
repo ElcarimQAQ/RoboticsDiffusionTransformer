@@ -1,0 +1,13 @@
+{
+	"instruction": "Fold the T-shirt, starting with the sleeves being folded first, then the T-shirt is folded from the bottom upwards until it is finally folded into a small rectangle.",
+	"expanded_instruction": [
+		"Fold the T-shirt, starting with the sleeves being folded first, then the T-shirt is folded from the bottom upwards until it is finally folded into a small rectangle.",
+		"Fold the T-shirt in half, aligning the sleeves and the bottom of the T-shirt.",
+		"Fold the sleeves of the T-shirt towards the center of the T-shirt.",
+		"Fold the T-shirt in half again, aligning the sleeves and the bottom of the T-shirt.",
+		"Fold the T-shirt in half one more time, aligning the sleeves and the bottom of the T-shirt.",
+		"Fold the T-shirt in half one last time, aligning the sleeves and the bottom of the T-shirt.",
+		"Fold the T-shirt into a small rectangle."
+	],
+	"simplified_instruction": ["Fold the cloth."]
+}

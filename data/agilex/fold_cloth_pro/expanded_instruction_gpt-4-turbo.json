@@ -1,0 +1,7 @@
+{
+	"instruction": "Fold the T-shirt, finally folded into a small rectangle..",
+	"expanded_instruction": [	
+		"Fold the T-shirt into a small rectangle."
+	],
+	"simplified_instruction": ["Fold the cloth."]
+}

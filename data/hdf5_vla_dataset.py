@@ -18,9 +18,9 @@ class HDF5VLADataset:
     def __init__(self) -> None:
         # [Modify] The path to the HDF5 dataset directory
         # Each HDF5 file contains one episode
-        HDF5_DIR = "data/datasets/agilex/rdt_data/"
+        HDF5_DIR = "data/agilex/fold_cloth_pro/"
         self.DATASET_NAME = "agilex"
-        
+        print(f"Loading dataset {self.DATASET_NAME} from {HDF5_DIR}...")
         self.file_paths = []
         for root, _, files in os.walk(HDF5_DIR):
             for filename in fnmatch.filter(files, '*.hdf5'):
