@@ -32,18 +32,21 @@
 # --publish_rate=30 \
 # # --disable_puppet_arm
 
-# DON'T Load Model From NAS!!!
-# It's extremely slow to load model.
-# If you run this command below, 
-# and you stop it before the model is loaded,
-# this process won't exit
-# and will cause weird behaviour (such as zombie process)
-# sudo mount -t nfs 49.52.10.136:/volume1/NAS1 /mnt
+# # sudo mount -t nfs 49.52.10.136:/volume1/NAS1 /mnt
+# export HF_ENDPOINT=https://hf-mirror.com
+# python -m scripts.vla_inference \
+# --use_actions_interpolation \
+# --pretrained_model_name_or_path="/mnt/models/rdt-1b-finetune/rdt-finetune-1b-fold-cloth-pro-32-64-single/checkpoint-41000" \
+# --lang_embeddings_path="/mnt/embedding/t5-v1_1-xxl-4096/fold_cloth_pro.pt" \
+# --ctrl_freq=25 \
+# --publish_rate=30 \
+# #--disable_puppet_arm
+
 export HF_ENDPOINT=https://hf-mirror.com
-python -m scripts.agilex_inference \
+python -m scripts.vla_inference \
 --use_actions_interpolation \
---pretrained_model_name_or_path="/mnt/models/rdt-1b-finetune/rdt-finetune-1b-fold-cloth-pro-32-64-single/checkpoint-41000" \
---lang_embeddings_path="/mnt/embedding/t5-v1_1-xxl-4096/fold_cloth_pro.pt" \
+--pretrained_model_name_or_path="./checkpoints/rdt-finetune-1b-stack-cube_v0/checkpoint-8000" \
+--lang_embeddings_path="./weights/maniskill-model/lang_embeds/text_embed_StackCube-v1.pt" \
 --ctrl_freq=25 \
 --publish_rate=30 \
 # --disable_puppet_arm

@@ -10,6 +10,8 @@ import threading
 import time
 import yaml
 from collections import deque
+import base64
+#import tensorflow as tf
 
 import numpy as np
 import rospy
@@ -20,9 +22,12 @@ from nav_msgs.msg import Odometry
 from PIL import Image as PImage
 from sensor_msgs.msg import Image, JointState
 from std_msgs.msg import Header
+import requests
+import json_numpy
+json_numpy.patch()
 import cv2
 
-from scripts.agilex_model import create_model
+# from scripts.agilex_model import create_model
 
 # sys.path.append("./")
 
@@ -37,23 +42,23 @@ preload_images = None
 
 
 # Initialize the model
-def make_policy(args):
-    with open(args.config_path, "r") as fp:
-        config = yaml.safe_load(fp)
-    args.config = config
+# def make_policy(args):
+#     with open(args.config_path, "r") as fp:
+#         config = yaml.safe_load(fp)
+#     args.config = config
     
-    # pretrained_text_encoder_name_or_path = "google/t5-v1_1-xxl"
-    pretrained_vision_encoder_name_or_path = "./weights/siglip-so400m-patch14-384"
-    model = create_model(
-        args=args.config, 
-        dtype=torch.bfloat16,
-        pretrained=args.pretrained_model_name_or_path,
-        # pretrained_text_encoder_name_or_path=pretrained_text_encoder_name_or_path,
-        pretrained_vision_encoder_name_or_path=pretrained_vision_encoder_name_or_path,
-        control_frequency=args.ctrl_freq,
-    )
+#     # pretrained_text_encoder_name_or_path = "google/t5-v1_1-xxl"
+#     pretrained_vision_encoder_name_or_path = "./weights/siglip-so400m-patch14-384"
+#     model = create_model(
+#         args=args.config, 
+#         dtype=torch.bfloat16,
+#         pretrained=args.pretrained_model_name_or_path,
+#         # pretrained_text_encoder_name_or_path=pretrained_text_encoder_name_or_path,
+#         pretrained_vision_encoder_name_or_path=pretrained_vision_encoder_name_or_path,
+#         control_frequency=args.ctrl_freq,
+#     )
 
-    return model
+#     return model
 
 
 def set_seed(seed):
@@ -151,6 +156,125 @@ def update_observation_window(args, config, ros_operator):
     )
 
 
+def check_image_format(image) -> None:
+    """
+    Validate input image format.
+
+    Args:
+        image: Image to check
+
+    Raises:
+        AssertionError: If image format is invalid
+    """
+    is_numpy_array = isinstance(image, np.ndarray)
+    has_correct_shape = len(image.shape) == 3 and image.shape[-1] == 3
+    has_correct_dtype = image.dtype == np.uint8
+
+    assert is_numpy_array and has_correct_shape and has_correct_dtype, (
+        "Incorrect image format detected! Make sure that the input image is a "
+        "numpy array with shape (H, W, 3) and dtype np.uint8!"
+    )
+
+OPENVLA_IMAGE_SIZE = 256
+
+
+def prepare_images_for_vla(image: np.ndarray):
+    """
+    Prepare images for VLA input by resizing and cropping as needed.
+    """
+        # Validate format
+    check_image_format(image)
+
+        # Resize if needed
+    if image.shape != (OPENVLA_IMAGE_SIZE, OPENVLA_IMAGE_SIZE, 3):
+        image = resize_image_for_policy(image, OPENVLA_IMAGE_SIZE)
+
+        # Convert to PIL image
+        pil_image = Image.fromarray(image).convert("RGB")
+
+    return pil_image
+
+def http_inference(args, config, t_step):
+    global observation_window
+    """替换原有的模型推理函数，改为HTTP请求"""
+    def encode_image(img):
+        # 使用与训练时相同的JPEG编码方式
+        _, buffer = cv2.imencode('.jpg', img)
+        return base64.b64encode(buffer).decode('utf-8')
+
+    # # 获取最新观测数据
+    # latest_obs = observation_window[-1]
+    # # 构造符合服务端API要求的请求体
+    # payload = {
+    #     "observation": {
+    #         "qpos": latest_obs['qpos'].cpu().numpy().tolist(),
+    #         "images": {
+    #             config["camera_names"][0]: encode_image(latest_obs['images'][config["camera_names"][0]]),
+    #             config["camera_names"][1]: encode_image(latest_obs['images'][config["camera_names"][1]]),
+    #             config["camera_names"][2]: encode_image(latest_obs['images'][config["camera_names"][2]])
+    #         }
+    #     },
+    #     "instruction": "执行当前操作指令"  # 可根据实际情况动态修改
+    # }
+
+    image_left = observation_window[-1]['images'][config['camera_names'][2]]
+    image_right = observation_window[-1]['images'][config['camera_names'][1]]
+    print(image_left.shape)
+    print(image_left.dtype)
+
+    image_l = cv2.resize(image_left,(256,256))
+    image_r = cv2.resize(image_right,(256,256))
+    cv2.imshow('Image',cv2.cvtColor(image_l,cv2.COLOR_RGB2BGR))
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    
+
+
+    try:
+        #发送HTTP请求到AI服务
+        response_left = requests.post(
+            "http://localhost:8000/act",
+            json={"image":image_l,
+            "instruction": "fold the cloth"}
+        )
+        response_left.raise_for_status()
+        #解析服务端返回的动作数据
+        action_data_left = response_left.json()
+
+
+        response_right = requests.post(
+            "http://localhost:8000/act",
+            json={"image":image_r,
+            "instruction": "fold the cloth"}
+        )
+        response_right.raise_for_status()
+        #解析服务端返回的动作数据
+        action_data_right = response_right.json()
+        
+
+        
+
+        # 将返回的action转换为numpy数组
+        raw_action = np.concatenate([
+            action_data_left,
+            action_data_right
+            
+        ])
+        print(raw_action)
+        
+        # 生成与原始模型输出相同格式的动作缓冲区
+        action_buffer = np.tile(raw_action, (config['chunk_size'], 1))
+        return action_buffer
+
+    except requests.exceptions.RequestException as e:
+        print(f"HTTP请求失败: {e}")
+        # 返回安全默认动作
+        return np.zeros((config['chunk_size'], config['state_dim']))
+    except ValueError as e:
+        print(f"响应解析错误: {e}")
+        return np.zeros((config['chunk_size'], config['state_dim']))
+
+
 # RDT inference
 def inference_fn(args, config, policy, t):
     global observation_window
@@ -211,18 +335,12 @@ def inference_fn(args, config, policy, t):
         return actions
 
 
+
+
 # Main loop for the manipulation task
 def model_inference(args, config, ros_operator):
     global lang_embeddings
     
-    # Load rdt model
-    policy = make_policy(args)
-    
-    lang_dict = torch.load(args.lang_embeddings_path)
-    # print((f"{lang_dict.shape=}"))
-    # print(f"Running with instruction: \"{lang_dict['instruction']}\" from \"{lang_dict['name']}\"")
-    # lang_embeddings = lang_dict["embeddings"]
-    lang_embeddings = lang_dict
     
     max_publish_step = config['episode_len']
     chunk_size = config['chunk_size']
@@ -262,8 +380,8 @@ def model_inference(args, config, ros_operator):
                     # Start inference
                     print(f"Action execution time: {time.time() - time0} s")
 
-                    action_buffer = inference_fn(args, config, policy, t).copy()
-
+                    #action_buffer = inference_fn(args, config, policy, t).copy()
+                    action_buffer = http_inference(args,config,t).copy()
                     time0 = time.time()
                 
                 raw_action = action_buffer[t % chunk_size]
@@ -281,6 +399,7 @@ def model_inference(args, config, ros_operator):
                     
                     if not args.disable_puppet_arm:
                         ros_operator.puppet_arm_publish(left_action, right_action)  # puppet_arm_publish_continuous_thread
+                        ros_operator.puppet_arm_publish_sim(left_action, right_action)
                 
                     if args.use_robot_base:
                         vel_action = act[14:16]
@@ -307,7 +426,9 @@ class RosOperator:
         self.img_left_depth_deque = None
         self.bridge = None
         self.puppet_arm_left_publisher = None
+        self.puppet_arm_left_publisher_sim = None
         self.puppet_arm_right_publisher = None
+        self.puppet_arm_right_publisher_sim = None
         self.robot_base_publisher = None
         self.puppet_arm_publish_thread = None
         self.puppet_arm_publish_lock = None
@@ -338,6 +459,16 @@ class RosOperator:
         self.puppet_arm_left_publisher.publish(joint_state_msg)
         joint_state_msg.position = right
         self.puppet_arm_right_publisher.publish(joint_state_msg)
+
+    def puppet_arm_publish_sim(self, left, right):
+        joint_state_msg = JointState()
+        joint_state_msg.header = Header()
+        joint_state_msg.header.stamp = rospy.Time.now()  # Set timestep
+        joint_state_msg.name = ['joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'joint6','joint7','joint8']  # 设置关节名称
+        joint_state_msg.position = left
+        self.puppet_arm_left_publisher_sim.publish(joint_state_msg)
+        joint_state_msg.position = right
+        self.puppet_arm_right_publisher_sim.publish(joint_state_msg)
 
     def robot_base_publish(self, vel):
         vel_msg = Twist()
@@ -577,6 +708,8 @@ class RosOperator:
         rospy.Subscriber(self.args.robot_base_topic, Odometry, self.robot_base_callback, queue_size=1000, tcp_nodelay=True)
         self.puppet_arm_left_publisher = rospy.Publisher(self.args.puppet_arm_left_cmd_topic, JointState, queue_size=10)
         self.puppet_arm_right_publisher = rospy.Publisher(self.args.puppet_arm_right_cmd_topic, JointState, queue_size=10)
+        self.puppet_arm_left_publisher_sim = rospy.Publisher(self.args.puppet_arm_left_cmd_topic_sim, JointState, queue_size=10)
+        self.puppet_arm_right_publisher_sim = rospy.Publisher(self.args.puppet_arm_right_cmd_topic_sim, JointState, queue_size=10)
         self.robot_base_publisher = rospy.Publisher(self.args.robot_base_cmd_topic, Twist, queue_size=10)
 
 
@@ -605,6 +738,10 @@ def get_arguments():
                         default='/master/joint_left', required=False)
     parser.add_argument('--puppet_arm_right_cmd_topic', action='store', type=str, help='puppet_arm_right_cmd_topic',
                         default='/master/joint_right', required=False)
+    parser.add_argument('--puppet_arm_left_cmd_topic_sim', action='store', type=str, help='puppet_arm_left_cmd_topic',
+                        default='/joint_command_left', required=False)
+    parser.add_argument('--puppet_arm_right_cmd_topic_sim', action='store', type=str, help='puppet_arm_right_cmd_topic',
+                        default='/joint_command_right', required=False)
     parser.add_argument('--puppet_arm_left_topic', action='store', type=str, help='puppet_arm_left_topic',
                         default='/puppet/joint_left', required=False)
     parser.add_argument('--puppet_arm_right_topic', action='store', type=str, help='puppet_arm_right_topic',
