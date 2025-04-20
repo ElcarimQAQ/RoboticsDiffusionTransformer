@@ -43,7 +43,7 @@ def make_policy(args):
     args.config = config
     
     # pretrained_text_encoder_name_or_path = "google/t5-v1_1-xxl"
-    pretrained_vision_encoder_name_or_path = "google/siglip-so400m-patch14-384"
+    pretrained_vision_encoder_name_or_path = "./weights/siglip-so400m-patch14-384"
     model = create_model(
         args=args.config, 
         dtype=torch.bfloat16,
@@ -217,9 +217,13 @@ def model_inference(args, config, ros_operator):
     # Load rdt model
     policy = make_policy(args)
     
-    lang_dict = torch.load(args.lang_embeddings_path)
-    print(f"Running with instruction: \"{lang_dict['instruction']}\" from \"{lang_dict['name']}\"")
-    lang_embeddings = lang_dict["embeddings"]
+    # lang_dict = torch.load(args.lang_embeddings_path)
+    # # print(f"{lang_dict.shape=}")
+    # # from pprint import pprint
+    # # pprint(lang_dict)
+    # print(f"Running with instruction: \"{lang_dict['instruction']}\" from \"{lang_dict['name']}\"")
+    # lang_embeddings = lang_dict["embeddings"]
+    lang_embeddings = torch.load(args.lang_embeddings_path)
     
     max_publish_step = config['episode_len']
     chunk_size = config['chunk_size']
@@ -248,6 +252,8 @@ def model_inference(args, config, ros_operator):
     
             action_buffer = np.zeros([chunk_size, config['state_dim']])
             
+            time0 = time.time()
+
             while t < max_publish_step and not rospy.is_shutdown():
                 # Update observation window
                 update_observation_window(args, config, ros_operator)
@@ -255,7 +261,11 @@ def model_inference(args, config, ros_operator):
                 # When coming to the end of the action chunk
                 if t % chunk_size == 0:
                     # Start inference
+                    print(f"Action execution time: {time.time() - time0} s")
+
                     action_buffer = inference_fn(args, config, policy, t).copy()
+
+                    time0 = time.time()
                 
                 raw_action = action_buffer[t % chunk_size]
                 action = raw_action
