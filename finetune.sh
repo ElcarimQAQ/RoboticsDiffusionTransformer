@@ -46,7 +46,7 @@ export WANDB_PROJECT="robotics_diffusion_transformer"
 
 # For run in a single node/machine
 export CUDA_VISIBLE_DEVICES=2
-export OUTPUT_DIR="./outputs/checkpoints/rdt-finetune-1b-fold-cloth"
+export OUTPUT_DIR="./outputs/checkpoints/rdt-finetune-1b-stack-cube-1-e31"
 if [ ! -d "$OUTPUT_DIR" ]; then
     mkdir "$OUTPUT_DIR"
     echo "Folder '$OUTPUT_DIR' created"
@@ -63,10 +63,10 @@ accelerate launch main.py \
     --output_dir=$OUTPUT_DIR \
     --train_batch_size=4 \
     --gradient_accumulation_steps=8 \
-    --sample_batch_size=4 \
-    --max_train_steps=200000 \
-    --checkpointing_period=100 \
-    --sample_period=500 \
+    --sample_batch_size=2 \
+    --max_train_steps=150000 \
+    --checkpointing_period=500 \
+    --sample_period=10000 \
     --checkpoints_total_limit=20 \
     --lr_scheduler="constant" \
     --learning_rate=1e-4 \
